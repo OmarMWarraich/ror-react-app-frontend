@@ -1,7 +1,7 @@
-import { POSTS_API_URL, SEARCH_API_URL } from "../../constants";
+import { POSTS_API_URL, SEARCH_API_URL, API_URL } from "../../constants";
 
 export const createPost = async (postData) => {
-  const response = await fetch(POSTS_API_URL, {
+  const response = await fetch(`${API_URL}/posts`, {
     method: "POST",
     body: postData,
     headers: {
@@ -16,7 +16,7 @@ export const createPost = async (postData) => {
 };
 
 export const deletePost = async (id) => {
-  const response = await fetch(`${POSTS_API_URL}/${id}`, {
+  const response = await fetch(`${API_URL}/posts/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -31,7 +31,7 @@ export const deletePost = async (id) => {
 };
 
 export const fetchAllPosts = async (page = 1) => {
-  const response = await fetch(`${POSTS_API_URL}?page=${page}`, {
+  const response = await fetch(`${API_URL}/posts?page=${page}`, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
@@ -43,7 +43,7 @@ export const fetchAllPosts = async (page = 1) => {
 };
 
 export const fetchPost = async (id) => {
-  const response = await fetch(`${POSTS_API_URL}/${id}`, {
+  const response = await fetch(`${API_URL}/posts/${id}`, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
@@ -55,7 +55,7 @@ export const fetchPost = async (id) => {
 };
 
 export const updatePost = async (id, postData) => {
-  const response = await fetch(`${POSTS_API_URL}/${id}`, {
+  const response = await fetch(`${API_URL}/posts/${id}`, {
     method: "PUT",
     body: postData,
     headers: {
@@ -71,7 +71,7 @@ export const updatePost = async (id, postData) => {
 export const searchPosts = async (searchTerm, page = 1) => {
   // => api/v1/search + /posts/?q=...
   const response = await fetch(
-    `${SEARCH_API_URL}/posts/?q=${searchTerm}&page=${page}`,
+    `${API_URL}/search/posts/?q=${searchTerm}&page=${page}`,
     {
       headers: {
         Authorization: localStorage.getItem("token"),

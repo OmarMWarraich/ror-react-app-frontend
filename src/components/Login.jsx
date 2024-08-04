@@ -1,30 +1,10 @@
 import { useRef } from "react";
+import { login } from "../services/authService";
 import "./Login.css";
 
 const Login = ({ setCurrUser, setShow }) => {
   const formRef = useRef();
-  const login = async (userInfo, setCurrUser) => {
-    const url = "http://localhost:3000/api/v1/login";
-    try {
-      const response = await fetch(url, {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-          accept: "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      });
-      const data = await response.json();
-      console.log(data.data);
-      if (!response.ok) throw data.error;
 
-      localStorage.setItem("token", response.headers.get("Authorization"));
-      localStorage.setItem("user", JSON.stringify(data.data));
-      window.location.reload();
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
