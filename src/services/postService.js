@@ -1,4 +1,4 @@
-import { POSTS_API_URL, SEARCH_API_URL, API_URL } from "../../constants";
+import { API_URL } from "../../constants";
 
 export const createPost = async (postData) => {
   const response = await fetch(`${API_URL}/posts`, {
