@@ -18,7 +18,6 @@ const User = ({ currUser, setCurrUser }) => {
         password: data.password,
       },
     };
-    console.log("Login data:", userInfo);
     await login(userInfo, setCurrUser);
     e.target.reset();
   };
@@ -33,7 +32,6 @@ const User = ({ currUser, setCurrUser }) => {
         password: data.password,
       },
     };
-    console.log("Signup data:", userInfo);
     await signup(userInfo, setCurrUser);
     e.target.reset();
   };
