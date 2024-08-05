@@ -23,6 +23,13 @@ import styled from "styled-components";
 //   }
 // `
 
+export const ParentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+`;
+
 export const Container = styled.div`
   background-color: #fff;
   border-radius: 10px;
